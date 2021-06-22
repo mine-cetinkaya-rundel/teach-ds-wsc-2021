@@ -413,20 +413,6 @@ widgetframe::frameWidget(diagram, height = "60%")
 
 ---
 
-.discussion[
-Discuss in groups of three and then as a large group.
-
-- What are your first reactions to the curriculum we just described for an intro data science course? 
-- Which components can you see yourself (or do you already) include in an intro data science curriculum?
-- Which components do you have reservations about, and why?
-]
-
-```{r echo=FALSE}
-countdown(minutes = 5)
-```
-
----
-
 .pull-left-narrow[
   .huge-blue-number[5]
 ]
@@ -777,7 +763,7 @@ ggplot(un_roll_calls, aes(x = amend)) +
 ```
 ]
 .pull-right[
-```{r make-ratatouille-small, echo=FALSE, out.height=150, out.width=250, fig.align="center"}
+```{r make-ratatouille-small, echo=FALSE, out.height=120, out.width=250, fig.align="center"}
 knitr::include_graphics("img/make-ratatouille.png")
 ```
 .small[
@@ -843,7 +829,7 @@ class: middle
 The following is used to create the multivariate visualisation from earlier. How much of the code would you show/hide when just starting teaching ggplot2?
 ]
 
-.tiny[
+.small[
 ```{r unvotes-multivariate-code, eval=FALSE}
 un_votes %>%
   filter(country %in% c("United States")) %>%
