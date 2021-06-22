@@ -1,0 +1,7 @@
+title: Teaching data science
+description: Materials for the Teaching data science workshop by Dr. Mine Çetinkaya-Rundel and Dr. Colin Rundel at WSC 2021
+logo: logo/logo.gif
+show_downloads: true
+theme: jekyll-theme-minimal
+plugins:
+  - jemoji
