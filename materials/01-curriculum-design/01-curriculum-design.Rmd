@@ -526,7 +526,7 @@ class: middle, center
 ---
 
 .your-turn[
-- Go to [bit.ly/design-ds-eku](http://bit.ly/design-ds-eku) to join the RStudio Cloud workspace for this workshop
+- Go to [bit.ly/teach-ds-wsc-cloud](https://bit.ly/teach-ds-wsc-cloud) to join the RStudio Cloud workspace for this workshop
 - Start the **assignment** called **01 - Curriculum Design**
 - Open the R Markdown document called `un-votes.Rmd`, knit the document, view the result
 - Then, change "Turkey" to another country, and knit again.
@@ -538,7 +538,6 @@ class: middle, center
 ```{r echo=FALSE}
 countdown(minutes = 5)
 ```
-
 
 ---
 
@@ -1416,22 +1415,3 @@ Do it all in R!
 - Git automation with **ghclass**
 - Interactive tutorials with **learnr**
 - ...
-
----
-
-class: middle
-
-.your-turn[
-### 01 - Curriculum design / `start-with-cake.Rmd`
-
-.small[
-- Your challenge is to go from nothing to a data visualisation in 15 minutes of your first class. Don't worry about the computing infrastructure, assume students have successfully landed in RStudio Cloud like you did earlier. Design an exercise for them to "create" their first visualisation.
-- Need inspiration? Use `ggplot2::diamonds`, `dplyr::starwars`, dataset from `nycflights13` or `gapminder` packages.
-- If you already have a first day exercise you like, you can modify it to fit the challenge: from nothing to a data visualisation in 15 minutes!
-- Compare notes with breakout group mates. 
-- Then, take one minute to write down one concrete change you'd like to consider making in your teaching based on what we've covered in this module.
-]]
-
-```{r echo=FALSE}
-countdown(minutes = 10)
-```
