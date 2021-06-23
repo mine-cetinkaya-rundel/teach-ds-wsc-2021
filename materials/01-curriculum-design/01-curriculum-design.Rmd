@@ -413,20 +413,6 @@ widgetframe::frameWidget(diagram, height = "60%")
 
 ---
 
-.discussion[
-Discuss in groups of three and then as a large group.
-
-- What are your first reactions to the curriculum we just described for an intro data science course? 
-- Which components can you see yourself (or do you already) include in an intro data science curriculum?
-- Which components do you have reservations about, and why?
-]
-
-```{r echo=FALSE}
-countdown(minutes = 5)
-```
-
----
-
 .pull-left-narrow[
   .huge-blue-number[5]
 ]
@@ -444,12 +430,12 @@ class: middle, inverse
 ## Which kitchen would you rather bake in? 
 
 .pull-left[
-```{r kitchen-inrepair, echo=FALSE}
+```{r kitchen-inrepair, echo=FALSE, fig.alt = "A kitchen in shambles that needs repair."}
 knitr::include_graphics("img/kitchen-inrepair.png")
 ```
 ]
 .pull-right[
-```{r kitchen-built, echo=FALSE}
+```{r kitchen-built, echo=FALSE, fig.alt = "A neat and tidy kitchen that needs no repair."}
 knitr::include_graphics("img/kitchen-built.png")
 ```
 ]
@@ -492,7 +478,7 @@ image_read("img/kitchen-built.png") %>%
 ---
 
 .pull-left[
-```{r kitchen-inrepair-small, echo=FALSE, out.height=250}
+```{r kitchen-inrepair-small, echo=FALSE, out.height=250, fig.alt = "A kitchen in shambles that needs repair."}
 knitr::include_graphics("img/kitchen-inrepair.png")
 ```
 - Install R
@@ -505,7 +491,7 @@ knitr::include_graphics("img/kitchen-inrepair.png")
 - Install git
 ]
 .pull-right[
-```{r kitchen-built-small, echo=FALSE, out.height=250}
+```{r kitchen-built-small, echo=FALSE, out.height=250, fig.alt = "A neat and tidy kitchen that needs no repair."}
 knitr::include_graphics("img/kitchen-built.png")
 ```
 - Go to rstudio.cloud (or some other server based solution)
@@ -546,12 +532,12 @@ class: middle, inverse
 ## How do you prefer your cake recipes? Words only, or words & pictures?
 
 .pull-left[
-```{r recipe-picture, echo=FALSE}
+```{r recipe-picture, echo=FALSE, fig.alt = "A recipe with words and pictures."}
 knitr::include_graphics("img/recipe-picture.png")
 ```
 ]
 .pull-right[
-```{r recipe-words, echo=FALSE}
+```{r recipe-words, echo=FALSE, fig.alt = "A recipe with words only."}
 knitr::include_graphics("img/recipe-words.png")
 ```
 ]
@@ -594,7 +580,7 @@ image_read("img/recipe-words.png") %>%
 ---
 
 .pull-left[
-```{r recipe-picture-small, echo=FALSE, out.height=150, out.width=250, fig.align="center"}
+```{r recipe-picture-small, echo=FALSE, out.height=150, out.width=250, fig.align="center", fig.alt = "A recipe with words and pictures."}
 knitr::include_graphics("img/recipe-picture.png")
 ```
 - Open today's demo project
@@ -602,7 +588,7 @@ knitr::include_graphics("img/recipe-picture.png")
 - Then, change `Turkey` to a different country, and plot again
 ]
 .pull-right[
-```{r recipe-words-small, echo=FALSE, out.height=150, out.width=250, fig.align="center"}
+```{r recipe-words-small, echo=FALSE, out.height=150, out.width=250, fig.align="center", fig.alt = "A recipe with words only."}
 knitr::include_graphics("img/recipe-words.png")
 ```
 .small[
@@ -720,12 +706,12 @@ class: middle, inverse
 ## Which motivates you more to learn how to cook: perfectly chopped onions or ratatouille?
 
 .pull-left[
-```{r chop-onions, echo=FALSE}
+```{r chop-onions, echo=FALSE, fig.alt = "Knife and chopped onions."}
 knitr::include_graphics("img/chop-onions.png")
 ```
 ]
 .pull-right[
-```{r make-ratatouille, echo=FALSE}
+```{r make-ratatouille, echo=FALSE, fig.alt = "A plate of ratatouille."}
 knitr::include_graphics("img/make-ratatouille.png")
 ```
 ]
@@ -768,7 +754,7 @@ image_read("img/make-ratatouille.png") %>%
 ---
 
 .pull-left[
-```{r chop-onions-small, echo=FALSE, out.height=150, out.width=250, fig.align="center"}
+```{r chop-onions-small, echo=FALSE, out.height=150, out.width=250, fig.align="center", fig.alt = "Knife and chopped onions."}
 knitr::include_graphics("img/chop-onions.png")
 ```
 ```{r unvotes-univariate, echo=FALSE, warning=FALSE}
@@ -777,7 +763,7 @@ ggplot(un_roll_calls, aes(x = amend)) +
 ```
 ]
 .pull-right[
-```{r make-ratatouille-small, echo=FALSE, out.height=150, out.width=250, fig.align="center"}
+```{r make-ratatouille-small, echo=FALSE, out.height=120, out.width=250, fig.align="center", fig.alt = "A plate of ratatouille."}
 knitr::include_graphics("img/make-ratatouille.png")
 ```
 .small[
@@ -809,12 +795,12 @@ class: middle
 ## .hand[ but need to avoid ] `r emo::ji("point_down")`
 
 .pull-left[
-```{r owl-1, echo=FALSE, fig.align="right", out.height=390, out.width=250}
+```{r owl-1, echo=FALSE, fig.align="right", out.height=390, out.width=250, fig.alt = "Step 1 of drawing an owl is two circles, one for head and one for body."}
 knitr::include_graphics("img/owl-step1.png")
 ```
 ]
 .pull-right[
-```{r owl-2, echo=FALSE, fig.align="left", out.height=390, out.width=250}
+```{r owl-2, echo=FALSE, fig.align="left", out.height=390, out.width=250, fig.alt = "Step 2 of drawing an owl is drawing the entire owl, with all details."}
 knitr::include_graphics("img/owl-step2.png")
 ```
 ]
@@ -843,7 +829,7 @@ class: middle
 The following is used to create the multivariate visualisation from earlier. How much of the code would you show/hide when just starting teaching ggplot2?
 ]
 
-.tiny[
+.small[
 ```{r unvotes-multivariate-code, eval=FALSE}
 un_votes %>%
   filter(country %in% c("United States")) %>%
@@ -969,7 +955,7 @@ ggplot(data = us_votes) #<<
 ```
 ]
 .pull-right[
-```{r ref.label="scaffold-layer-1", echo=FALSE, out.width = "100%"}
+```{r ref.label="scaffold-layer-1", echo=FALSE, out.width = "100%", fig.alt = "A plot with an empty background, no data shown."}
 ```
 ]
 
@@ -985,7 +971,7 @@ ggplot(data = us_votes,
 ]
 ]
 .pull-right[
-```{r ref.label="scaffold-layer-2", echo=FALSE, out.width = "100%"}
+```{r ref.label="scaffold-layer-2", echo=FALSE, out.width = "100%", fig.alt = "A frequency bar plot with whether the vote was considered important or not on the x-axis and bars filled with the vote (yes, no, or abstain)."}
 ```
 ]
 
@@ -1002,7 +988,7 @@ ggplot(data = us_votes,
 ]
 ]
 .pull-right[
-```{r ref.label="scaffold-layer-3", echo=FALSE, out.width = "100%"}
+```{r ref.label="scaffold-layer-3", echo=FALSE, out.width = "100%", fig.alt = "A relative frequency bar plot with whether the vote was considered important or not on the x-axis and bars filled with the vote (yes, no, or abstain)."}
 ```
 ]
 
@@ -1020,7 +1006,7 @@ ggplot(data = us_votes,
 ]
 ]
 .pull-right[
-```{r ref.label="scaffold-layer-4", echo=FALSE, out.width = "100%", fig.asp = 1.3}
+```{r ref.label="scaffold-layer-4", echo=FALSE, out.width = "100%", fig.asp = 1.3, fig.alt = "A relative frequency bar plot with whether the vote was considered important or not on the x-axis and bars filled with the vote (yes, no, or abstain), faceted by issue (colonialism, arms control and disarmament, economic development, human rights, Palestinian conflict, and nuclear weapons and nuclear material)."}
 ```
 ]
 
@@ -1044,7 +1030,7 @@ ggplot(data = us_votes,
 ]
 ]
 .pull-right[
-```{r ref.label="scaffold-layer-5", echo=FALSE, out.width = "100%", fig.asp = 1.3}
+```{r ref.label="scaffold-layer-5", echo=FALSE, out.width = "100%", fig.asp = 1.3, fig.alt = "A relative frequency bar plot with whether the vote was considered important or not on the x-axis and bars filled with the vote (yes, no, or abstain), faceted by issue (colonialism, arms control and disarmament, economic development, human rights, Palestinian conflict, and nuclear weapons and nuclear material). Plot also has a title and subtitle."}
 ```
 ]
 
@@ -1069,7 +1055,7 @@ ggplot(data = us_votes,
 ]
 ]
 .pull-right[
-```{r ref.label="scaffold-layer-6", echo=FALSE, out.width = "100%", fig.asp = 1.3}
+```{r ref.label="scaffold-layer-6", echo=FALSE, out.width = "100%", fig.asp = 1.3, fig.alt = "A relative frequency bar plot with whether the vote was considered important or not on the x-axis and bars filled with the vote (yes, no, or abstain), faceted by issue (colonialism, arms control and disarmament, economic development, human rights, Palestinian conflict, and nuclear weapons and nuclear material). Plot also has a title and subtitle and the legend label is customized."}
 ```
 ]
 
@@ -1094,7 +1080,7 @@ ggplot(data = us_votes,
 ]
 ]
 .pull-right[
-```{r ref.label="scaffold-layer-7", echo=FALSE, out.width = "100%", fig.asp = 1.3}
+```{r ref.label="scaffold-layer-7", echo=FALSE, out.width = "100%", fig.asp = 1.3,  fig.alt = "A relative frequency bar plot with whether the vote was considered important or not on the y-axis and bars filled with the vote (yes, no, or abstain), faceted by issue (colonialism, arms control and disarmament, economic development, human rights, Palestinian conflict, and nuclear weapons and nuclear material). Plot also has a title and subtitle and the legend label is customized."}
 ```
 ]
 
@@ -1102,7 +1088,7 @@ ggplot(data = us_votes,
 
 ## ~~Skip~~ Re-insert baby steps
 
-```{r echo=FALSE}
+```{r echo=FALSE, fig.alt = "Screenshot of a learnr tutorial."}
 knitr::include_graphics("img/learnr-visualise.png")
 ```
 
@@ -1113,12 +1099,12 @@ class: middle, inverse
 ## Which is more likely to appeal to someone who has never tried broccoli?
 
 .pull-left[
-```{r broccoli-raw, echo=FALSE}
+```{r broccoli-raw, echo=FALSE, fig.alt = "Raw broccoli."}
 knitr::include_graphics("img/broccoli-raw.png")
 ```
 ]
 .pull-right[
-```{r broccoli-cooked, echo=FALSE}
+```{r broccoli-cooked, echo=FALSE, fig.alt = "Cooked broccoli in a noodle dish."}
 knitr::include_graphics("img/broccoli-cooked.png")
 ```
 ]
@@ -1161,7 +1147,7 @@ image_read("img/broccoli-cooked.png") %>%
 ---
 
 .pull-left-narrow[
-```{r broccoli-raw-small, echo=FALSE, out.height=150, out.width=250, fig.align="center"}
+```{r broccoli-raw-small, echo=FALSE, out.height=150, out.width=250, fig.align="center", fig.alt = "Raw broccoli."}
 knitr::include_graphics("img/broccoli-raw.png")
 ```
 
@@ -1170,12 +1156,12 @@ Today we're going to do web scraping
 - And with the help of *regular expressions*
 ]
 .pull-right-wide[
-```{r broccoli-cooked-small, echo=FALSE, out.height=150, out.width=250, fig.align="center"}
+```{r broccoli-cooked-small, echo=FALSE, out.height=150, out.width=250, fig.align="center", fig.alt = "Cooked broccoli in a noodle dish."}
 knitr::include_graphics("img/broccoli-cooked.png")
 ```
 
 - Today we go from this to that
-```{r echo=FALSE}
+```{r echo=FALSE, fig.alt = "Screenshot of a page from OpenSecrets.org on contributions to North Carolina congressional races."}
 knitr::include_graphics("img/open-secrets-nc.png")
 ```
 - and do so in a way that is easy to replicate for another state
@@ -1203,7 +1189,7 @@ class: middle
 - **Lesson:** Web scraping essentials for turning a structured table into a data frame in R.
 - **Ex 1:** Scrape the table off the web and save as a data frame.
 
-```{r open-secrets-nc-ex1, echo=FALSE, out.width="70%", fig.align="center"}
+```{r open-secrets-nc-ex1, echo=FALSE, out.width="70%", fig.align="center", fig.alt = "Screenshot of an HTML table on OpenSecrets.org and the version of the same table loaded into R."}
 knitr::include_graphics("img/open-secrets-nc-ex1.png")
 ```
 
@@ -1215,7 +1201,7 @@ knitr::include_graphics("img/open-secrets-nc-ex1.png")
 - **Ex 1:** Scrape the table off the web and save as a data frame.
 - **Ex 2:** What other information do we need represented as variables in the data to obtain the desired facets? 
 
-```{r open-secrets-nc-ex2, echo=FALSE, out.width="50%", fig.align="center"}
+```{r open-secrets-nc-ex2, echo=FALSE, out.width="50%", fig.align="center", fig.alt = "Maps of North Carolina with colors indicating the amount of money raised of political races with Challenger and Incumbent on the x-axis and Democrat, Republican, and Third Party on the y-axis."}
 knitr::include_graphics("img/open-secrets-nc-ex2.png")
 ```
 
@@ -1230,7 +1216,7 @@ knitr::include_graphics("img/open-secrets-nc-ex2.png")
 - **Ex 2:** What other information do we need represented as variables in the data to obtain the desired facets? 
 - **Lesson:** “Just enough” string parsing and regular expressions to go from
 
-```{r open-secrets-nc-ex3, echo=FALSE, out.width="100%"}
+```{r open-secrets-nc-ex3, echo=FALSE, out.width="100%", fig.alt = "On the left, a data frame with a single column titled candidate_info that has information on the name of the candidate, the party affiliation, and whether they're a challenger or an incumbent. On the right, a data frame where the same pieces of information spread across three separate columns."}
 knitr::include_graphics("img/open-secrets-nc-ex3.png")
 ```
 
@@ -1241,12 +1227,12 @@ class: middle, inverse
 ## If you are already taking a baking class, which will be easier to venture on to?
 
 .pull-left[
-```{r make-pastries, echo=FALSE}
+```{r make-pastries, echo=FALSE, fig.alt = "Plate of pastries."}
 knitr::include_graphics("img/make-pastries.png")
 ```
 ]
 .pull-right[
-```{r make-tacos, echo=FALSE}
+```{r make-tacos, echo=FALSE, fig.alt = "Plate of tacos."}
 knitr::include_graphics("img/make-tacos.png")
 ```
 ]
@@ -1302,7 +1288,7 @@ evals %>%
 ---
 
 .pull-left[
-```{r make-pastries-small, echo=FALSE, out.height=150, out.width=250, fig.align="center"}
+```{r make-pastries-small, echo=FALSE, out.height=150, out.width=250, fig.align="center", fig.alt = "Plate of pastries."}
 knitr::include_graphics("img/make-pastries.png")
 ```
 .small[
@@ -1321,7 +1307,7 @@ evals %>%
 ]
 ]
 .pull-right[
-```{r make-tacos-small, echo=FALSE, out.height=150, out.width=250, fig.align="center"}
+```{r make-tacos-small, echo=FALSE, out.height=150, out.width=250, fig.align="center", fig.alt = "Plate of tacos."}
 knitr::include_graphics("img/make-tacos.png")
 ```
 .small[
@@ -1339,7 +1325,7 @@ t.test(evals$score ~ evals$gender)
 The objective of this package is to perform statistical inference using an expressive statistical grammar that coheres with the tidyverse design framework.
 ]
 .pull-right-narrow[
-```{r echo=FALSE}
+```{r echo=FALSE, fig.alt = "Hex sticker for the infer package."}
 knitr::include_graphics("img/infer-hex.png")
 ```
 ]
