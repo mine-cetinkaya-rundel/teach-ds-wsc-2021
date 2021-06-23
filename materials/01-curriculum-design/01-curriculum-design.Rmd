@@ -513,8 +513,8 @@ class: middle, center
 
 .your-turn[
 - Go to [bit.ly/teach-ds-wsc-cloud](https://bit.ly/teach-ds-wsc-cloud) to join the RStudio Cloud workspace for this workshop
-- Start the **assignment** called **01 - Curriculum Design**
-- Open the R Markdown document called `un-votes.Rmd`, knit the document, view the result
+- Start the assignment called **UN Votes**
+- Open the R Markdown document called `un-votes.Rmd`and click on **Knit**
 - Then, change "Turkey" to another country, and knit again.
 - When you're done with the exercise, discuss with your neighbours: 
   - What worked? What didn't? 
