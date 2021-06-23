@@ -105,7 +105,7 @@ mean[1]
 ]
 --
 .pull-right-narrow[
-```{r echo=FALSE, fig.align="right"}
+```{r echo=FALSE, fig.align="right", fig.alt = "Illustration of student with a speech bubble saying 'Object of type what now?'"}
 knitr::include_graphics("img/student.png")
 ```
 ]
@@ -139,7 +139,7 @@ Visualise the relationship between city and highway mileage of cars from the `mp
 <br>
 .sample-answer[
 There is a strong, positive, linear relationship between the city & highway mileage. Year does not seem to be related to either variable.
-```{r message=FALSE, fig.height=2.5, fig.width=9, dpi=300, out.width="70%"}
+```{r message=FALSE, fig.height=2.5, fig.width=9, dpi=300, out.width="70%", fig.alt = "Scatterplot of highway mielage and city mileage where points are colored by year and a linear model is represented with a line with a positive slope on the plot."}
 ggplot(mpg,aes(x = hwy, y = cty, fill=year)) +geom_point()+geom_smooth()
 ```
 ]
@@ -157,7 +157,7 @@ class: middle
 ]
 ]
 .pull-right-narrow[
-```{r echo=FALSE, fig.align="center"}
+```{r echo=FALSE, fig.align="center", fig.alt = "Illustration of a teacher with a speech bubble that says 'So much to say, so little time...'"}
 knitr::include_graphics("img/teacher.png")
 ```
 ]
@@ -211,7 +211,7 @@ class: middle, inverse
 
 ---
 
-```{r echo=FALSE, out.width="70%", fig.align="center"}
+```{r echo=FALSE, out.width="70%", fig.align="center", fig.alt = "Two puzzle pieces that fit together, one says learnr and the other gradethis."}
 knitr::include_graphics("img/puzzle-pieces.png")
 ```
 
@@ -399,21 +399,6 @@ class: middle, inverse
 
 ---
 
-.your-turn[
-*Recommend one person in each breakout room share their screen and everyone work together.*
-
-- Go to RStudio Cloud
-- In the assignment titled `04 - Interactive tutorials`, open `penguins.Rmd` and click on **Run Document**
-- Read the instructions under `Code exercises`
-- Write more hints and code checking tests 
-]
-
-```{r echo=FALSE}
-countdown(minutes = 15)
-```
-
----
-
 ## Keep in mind!
 
 - Exercise chunks run in independent sessions, they don't actually work like R Markdown chunks (i.e. they don't remember what happened before)
@@ -521,7 +506,7 @@ Build a tutorial where students build develop their analysis in exercise code
 chunks (that are not checked) and only multiple choice questions are used for 
 assessment. [**`[example]`**](https://minecr.shinyapps.io/04-wrangleviz)
 
-```{r echo=FALSE, out.width="85%", fig.align="center"}
+```{r echo=FALSE, out.width="85%", fig.align="center", fig.alt = "Screenshot of a sample learnr tutorial."}
 knitr::include_graphics("img/learnr-simple.png")
 ```
 
@@ -535,7 +520,7 @@ knitr::include_graphics("img/learnr-simple.png")
 - Read the [Testing](https://r-pkgs.org/tests.html#test-tests) chapter in R Packages (Wickham and Bryan) 
 - Also read the [Metaprogramming](https://adv-r.hadley.nz/metaprogramming.html) section in Advanced R (Wickham)
 
-```{r echo=FALSE, out.width="75%", fig.align="center"}
+```{r echo=FALSE, out.width="75%", fig.align="center", fig.align="center", fig.alt = "Screenshots of resources listed in bullet points in slide."}
 knitr::include_graphics("img/learnr-learn-more.jpeg")
 ```
 
