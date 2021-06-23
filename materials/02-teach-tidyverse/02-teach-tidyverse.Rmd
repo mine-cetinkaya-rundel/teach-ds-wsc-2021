@@ -79,7 +79,7 @@ The tidyverse is an opinionated collection of R packages designed for data scien
 
 ## Tidy data
 
-```{r echo = FALSE}
+```{r echo = FALSE, fig.alt = "tidy data diagram"}
 knitr::include_graphics("img/tidy-data-frame.png")
 ```
 
@@ -96,7 +96,7 @@ Source: R for Data Science. Grolemund and Wickham.
 ## Tidy data + Tidyverse references
 
 .pull-left[
-```{r echo=FALSE}
+```{r echo=FALSE, fig.alt = "tidy papers screenshot"}
 knitr::include_graphics("img/tidy-papers.png")
 ```
 ]
@@ -459,7 +459,7 @@ class: middle
 
 The American Association of University Professors (AAUP) is a nonprofit membership association of faculty and other academic professionals. [This report](https://www.aaup.org/sites/default/files/files/AAUP_Report_InstrStaff-75-11_apr2013.pdf) by the AAUP shows trends in instructional staff employees between 1975 and 2011, and contains an image very similar to the one given below.
 
-```{r echo=FALSE,out.width="50%",fig.align="center"}
+```{r echo=FALSE,out.width="50%", fig.align="center", fig.alt = "staff employment figure"}
 knitr::include_graphics("img/staff-employment.png")
 ```
 
@@ -501,7 +501,7 @@ How would you approach this problem?
 
 class: center, middle
 
-```{r echo=FALSE,out.width="80%",fig.align="center"}
+```{r echo=FALSE,out.width="80%",fig.align="center", fig.alt = "pivot friends meme"}
 knitr::include_graphics("img/pivot.gif")
 ```
 
@@ -510,7 +510,7 @@ knitr::include_graphics("img/pivot.gif")
 ## `pivot_*()` functions
 
 ```{r echo=FALSE}
-knitr::include_graphics("img/tidyr-longer-wider.gif")
+knitr::include_graphics("img/tidyr-longer-wider.gif", fig.alt = "pivot function animation")
 ```
 
 ---
@@ -537,7 +537,7 @@ pivot_longer(
 .your-turn[
 ### 02 - Teach the tidyverse / `pivot.Rmd`
 
-- Go to [bit.ly/design-ds-eku](http://bit.ly/design-ds-eku) to join the RStudio Cloud workspace for this workshop
+- Go to [bit.ly/teach-ds-wsc-cloud](https://bit.ly/teach-ds-wsc-cloud) to join the RStudio Cloud workspace for this workshop
 - Start the **assignment** called **02 - Teaching the tidyverse**
 - Open the R Markdown document called `pivot.Rmd`, knit the document, view the result
 - Convert the data from wide format to long format.
@@ -785,30 +785,9 @@ sales %>%
 
 ---
 
-## tidyr solution - Auto
+## dplyr 1.0.0
 
-```{r}
-sales %>%
-  tibble(sales = .) %>%
-  unnest_auto(sales) %>%
-  unnest_auto(purchases) %>%
-  unnest_auto(purchases)
-```
-
----
-
-## Moral of the story
-
-- There are many ways of getting to the answer
-- Some likely need more scaffolding than others
-- It's worth considering how much of `purrr` fits into your introductory data science curriculum
-  - We'll give one example later where `purrr` provides big wins in the context of web scraping from many, similarly formatted pages!
-
----
-
-## dplyr improvements
-
-Another common usecase for purrr has been working across rows and/or columns of a data frame.
+Another common use case for purrr has been working across rows and/or columns of a data frames.
 
 Much of this functionality is now available directly in dplyr via the `across` and `rowwise` functions. Additional details and examples are availble in the vignettes:
 - [column-wise operations vignette](https://dplyr.tidyverse.org/articles/colwise.html)
