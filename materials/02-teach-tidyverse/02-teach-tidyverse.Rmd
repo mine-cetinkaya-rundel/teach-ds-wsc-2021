@@ -773,5 +773,3 @@ class: middle
 - [gghighlight](https://cran.r-project.org/web/packages/gghighlight/vignettes/gghighlight.html)
 
 - [tidybayes](https://mjskay.github.io/tidybayes/)
-
----
