@@ -331,41 +331,18 @@ class: middle
 
 ## `r emo::ji("woman_teacher")` Creating and sharing a single project
 
-.center[
-<iframe width="896" height="504" src="https://www.youtube.com/embed/81MrMcKZTX8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-]
+<br>
 
----
+.discussion[
 
-## `r emo::ji("woman_technologist")` Receiving and working on a shared project
+**Follow along!**
 
-.center[
-<iframe width="896" height="504" src="https://www.youtube.com/embed/_VCYdDQTFG8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-]
-
----
-
-.your-turn[
-
-.midi[
-`r emo::ji("woman_teacher")`: Identify one person in the group as **instructor**   
-`r emo::ji("woman_technologist")`: Rest of the group are **students**
-]
-
-#### `r emo::ji("woman_teacher")` Instructor:
 - Create a new project and give it a name
 - Install a package of your choice
 - Create a template R Markdown document in the project
 - Change the access level of the project so others can see it as well
-- Copy the project URL and share it with the rest of the group
-
-#### `r emo::ji("woman_technologist")` Students: 
-Access your instructor's project and pick up where they left off
+- *Optional:* Copy the project URL and share it with the rest of the group in the chat
 ]
-
-```{r echo=FALSE}
-countdown(minutes = 10, warn_when = 1, top = 0)
-```
 
 ---
 
