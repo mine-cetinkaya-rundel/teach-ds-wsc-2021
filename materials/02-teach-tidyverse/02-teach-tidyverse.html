@@ -55,10 +55,12 @@ The tidyverse is an opinionated collection of R packages designed for data scien
 
 ## Tidy data
 
-&lt;img src="img/tidy-data-frame.png" title="tidy data diagram" alt="tidy data diagram"  /&gt;
+&lt;img src="img/tidy-data-frame.png" title="tidy data diagram" alt="tidy data diagram" width="614" /&gt;
 
 1. Each variable must have its own column.
+
 1. Each observation must have its own row.
+
 1. Each value must have its own cell.
 
 .footnote[
@@ -70,11 +72,12 @@ Source: R for Data Science. Grolemund and Wickham.
 ## Tidy data + Tidyverse references
 
 .pull-left[
-&lt;img src="img/tidy-papers.png" title="tidy papers screenshot" alt="tidy papers screenshot"  /&gt;
+&lt;img src="img/tidy-papers.png" title="tidy papers screenshot" alt="tidy papers screenshot" width="458" /&gt;
 ]
 .pull-right[
-- Wickham, H. (2014). **Tidy data.** Journal of Statistical Software, 59(10), 1-23.
-- Wickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L., François, R., ... &amp; Kuhn, M. (2019). **Welcome to the Tidyverse.** Journal of Open Source Software, 4(43), 1686.
+- Wickham (2014). **Tidy data.** Journal of Statistical Software, 59(10), 1-23.
+
+- Wickham et al. (2019). **Welcome to the Tidyverse.** Journal of Open Source Software, 4(43), 1686.
 ]
 
 ---
@@ -192,45 +195,49 @@ mtcars &lt;- mtcars %&gt;%
 
 ## Visualising multiple variables
 
+### Tidyverse
+
+.small[
+
+```r
+ggplot(
+  mtcars,
+  aes(x = disp, y = mpg, color = transmission)
+) +
+  geom_point()
+```
+
+&lt;img src="02-teach-tidyverse_files/figure-html/unnamed-chunk-9-1.png" width="100%" /&gt;
+]
+
+---
+
+## Visualising even more variables
+
+### Tidyverse
+
+.small[
+
+```r
+ggplot(
+  mtcars,
+  aes(x = disp, y = mpg, color = transmission)
+) +
+  geom_point() +
+  facet_wrap(~ cyl)
+```
+
+&lt;img src="02-teach-tidyverse_files/figure-html/unnamed-chunk-10-1.png" width="100%" /&gt;
+]
+
+---
+
 ### Base R
 
 .small[
 
 ```r
 mtcars$trans_color &lt;- ifelse(mtcars$transmission == "automatic", "green", "blue")
-par(mar = c(2.5, 2.5, 0, 0), mgp = c(1.5, 0.5, 0))
-plot(mtcars$mpg ~ mtcars$disp, col = mtcars$trans_color)
-legend("topright", legend = c("automatic", "manual"),
-       pch = 1, col = c("green", "blue"))
-```
-
-![](02-teach-tidyverse_files/figure-html/unnamed-chunk-9-1.png)&lt;!-- --&gt;
-]
-
----
-
-## Visualising multiple variables
-
-### Tidyverse
-
-
-```r
-ggplot(mtcars,
-       aes(x = disp, y = mpg, color = transmission)) +
-  geom_point()
-```
-
-![](02-teach-tidyverse_files/figure-html/unnamed-chunk-10-1.png)&lt;!-- --&gt;
-
----
-
-## Visualising even more variables
-
-### Base R
-
-.small[
-
-```r
 mtcars_cyl4 = mtcars[mtcars$cyl == 4, ]
 mtcars_cyl6 = mtcars[mtcars$cyl == 6, ]
 mtcars_cyl8 = mtcars[mtcars$cyl == 8, ]
@@ -238,40 +245,28 @@ par(mfrow = c(1, 3), mar = c(2.5, 2.5, 2, 0), mgp = c(1.5, 0.5, 0))
 plot(mpg ~ disp, data = mtcars_cyl4, col = trans_color, main = "Cyl 4")
 plot(mpg ~ disp, data = mtcars_cyl6, col = trans_color, main = "Cyl 6")
 plot(mpg ~ disp, data = mtcars_cyl8, col = trans_color, main = "Cyl 8")
-legend("topright", legend = c("automatic", "manual"),
-       pch = 1, col = c("green", "blue"))
+legend("topright", legend = c("automatic", "manual"), pch = 1, col = c("green", "blue"))
 ```
 
-![](02-teach-tidyverse_files/figure-html/unnamed-chunk-11-1.png)&lt;!-- --&gt;
+&lt;img src="02-teach-tidyverse_files/figure-html/unnamed-chunk-11-1.png" width="100%" /&gt;
 ]
-
----
-
-## Visualising even more variables
-
-### Tidyverse
-
-
-```r
-ggplot(mtcars,
-       aes(x = disp, y = mpg, color = transmission)) +
-  geom_point() +
-  facet_wrap(~ cyl)
-```
-
-&lt;img src="02-teach-tidyverse_files/figure-html/unnamed-chunk-12-1.png" width="100%" /&gt;
 
 ---
 
 ## Benefits of starting with the tidyverse
 
 - More (human) readable syntax
+
 - More consistent syntax
+
 - Ease of multivariate visualizations
+
 - Data tidying/rectangling without advanced programming
+
 - Growth opportunities:
-  - dplyr -&gt; SQL
+  - dplyr -&gt; SQL / Spark / etc
   - purrr -&gt; functional programming
+  - modeling -&gt; tidymodels
 
 ---
 
@@ -314,13 +309,29 @@ class: middle
 
 --
 
-1. Students come in with intuition for being able to interpret data visualizations without needing much instructions. 
+1. Students come in with intuition for being able to interpret data visualizations without needing much instructions.
+
   - Focus the majority of class time initially on syntax and leave interpretations to students. 
   - Later on the scale tips -- spend more class time on concepts and results interpretations and less on syntax.
 
 --
 
 1. It can be easier for students to detect mistakes in visualizations compared to those in wrangling or modeling.
+
+---
+
+## What next?
+
+It depends on the course and subject matter, but generally data munging with dplyr is a good next step.
+
+Some general guidance,
+- Start with a small subset of verbs (e.g. `select()`, `filter()`, `mutate()`)
+
+- Aim to quickly get to `group_by()` and `summarize()` as this is where the action is.
+
+- Connecting munging back to data visualization tends to be more motivating than generating numerical summaries.
+
+- Data cleaning provides opportunities to introduce additional packages (e.g. `stringr`, `forcats`)
 
 ---
 
@@ -353,19 +364,19 @@ of faculty for each year.
 .small[
 
 ```r
-staff &lt;- read_csv("data/instructional-staff.csv")
-staff
+(staff &lt;- read_csv("data/instructional-staff.csv"))
 ```
 
 ```
 ## # A tibble: 5 x 12
-##   faculty_type   `1975` `1989` `1993` `1995` `1999` `2001` `2003` `2005` `2007` `2009` `2011`
-##   &lt;chr&gt;           &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-## 1 Full-Time Ten…   29     27.6   25     24.8   21.8   20.3   19.3   17.8   17.2   16.8   16.7
-## 2 Full-Time Ten…   16.1   11.4   10.2    9.6    8.9    9.2    8.8    8.2    8      7.6    7.4
-## 3 Full-Time Non…   10.3   14.1   13.6   13.6   15.2   15.5   15     14.8   14.9   15.1   15.4
-## 4 Part-Time Fac…   24     30.4   33.1   33.2   35.5   36     37     39.3   40.5   41.1   41.3
-## 5 Graduate Stud…   20.5   16.5   18.1   18.8   18.7   19     20     19.9   19.5   19.4   19.3
+##   faculty_type    `1975` `1989` `1993` `1995` `1999` `2001` `2003` `2005` `2007`
+##   &lt;chr&gt;            &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+## 1 Full-Time Tenu…   29     27.6   25     24.8   21.8   20.3   19.3   17.8   17.2
+## 2 Full-Time Tenu…   16.1   11.4   10.2    9.6    8.9    9.2    8.8    8.2    8  
+## 3 Full-Time Non-…   10.3   14.1   13.6   13.6   15.2   15.5   15     14.8   14.9
+## 4 Part-Time Facu…   24     30.4   33.1   33.2   35.5   36     37     39.3   40.5
+## 5 Graduate Stude…   20.5   16.5   18.1   18.8   18.7   19     20     19.9   19.5
+## # … with 2 more variables: 2009 &lt;dbl&gt;, 2011 &lt;dbl&gt;
 ```
 ]
 
@@ -376,6 +387,7 @@ staff
 - In order to recreate this visualization we need to first reshape the data:
   - one variable for faculty type 
   - one variable for year
+  
 - Convert the data from the wide format to long format
 
 --
@@ -408,34 +420,21 @@ But before we do so...
 
 ---
 
-## `pivot_longer()`
-
-
-```r
-pivot_longer(
-  data, 
-  cols,                # columns to pivot
-  names_to = "name",   # name of new column for variable names
-  values_to = "value"  # name of new column for values
-  )
-```
-
----
-
 ## Pivot staff data
 
 .small[
 
 ```r
-staff_long &lt;- staff %&gt;%
+(staff_long &lt;- staff %&gt;%
   pivot_longer(
-    cols = -faculty_type, 
-    names_to = "year", 
-    values_to = "percentage"
-    ) %&gt;%
-  mutate(percentage = as.numeric(percentage))
-
-staff_long
+    cols = -faculty_type,    # columns to pivot
+    names_to = "year",       # name of new column for variable names
+    values_to = "percentage" # name of new column for values
+  ) %&gt;%
+  mutate(
+    percentage = as.numeric(percentage)
+  )
+)
 ```
 
 ```
@@ -467,7 +466,7 @@ ggplot(staff_long, aes(x = percentage, y = year, fill = faculty_type)) +
   geom_col(position = "dodge")
 ```
 
-![](02-teach-tidyverse_files/figure-html/unnamed-chunk-19-1.png)&lt;!-- --&gt;
+![](02-teach-tidyverse_files/figure-html/unnamed-chunk-17-1.png)&lt;!-- --&gt;
 ]
 
 ---
@@ -481,7 +480,7 @@ ggplot(staff_long, aes(x = percentage, y = year, fill = faculty_type)) +
   geom_col()
 ```
 
-![](02-teach-tidyverse_files/figure-html/unnamed-chunk-20-1.png)&lt;!-- --&gt;
+![](02-teach-tidyverse_files/figure-html/unnamed-chunk-18-1.png)&lt;!-- --&gt;
 ]
 
 ---
@@ -500,9 +499,10 @@ staff_long %&gt;%
     part_time = if_else(faculty_type == "Part-Time Faculty",
                         "Part-Time Faculty", "Other Faculty"),
     year = as.numeric(year)
-    ) %&gt;% 
-  ggplot(aes(x = year, y = percentage/100, group = faculty_type, 
-             color = part_time)) +
+  ) %&gt;% 
+  ggplot(
+    aes(x = year, y = percentage/100, group = faculty_type, color = part_time)
+  ) +
   geom_line() +
   scale_color_manual(values = c("gray", "red")) + 
   scale_y_continuous(labels = label_percent(accuracy = 1)) + 
@@ -526,8 +526,10 @@ class: middle
 ## Data manipulation with purrr (or not?)
 
 - purrr is a package for functional programming with the tidyverse
-- If you picked up the tidyverse ~3 years ago, purrr was commonly used for data science tasks that involve iteration
-- In 2021, it's possible to do many of these data science tasks with dplyr and tidyr, which tend to me much more approachable to new learners
+
+- If you picked up the tidyverse &gt;2 years ago, purrr was commonly used for data science tasks that involve iteration
+
+- In 2021, it's possible to do many of these data science tasks with dplyr and tidyr, these approaches are often more approachable to new learners
 
 --
 
@@ -541,7 +543,12 @@ How familiar are you with the purrr package? Have you taught purrr in your data 
 
 We have data on lego sales and some information on the buyers in JSON format. We want to covert it into a tidy data frame.
 
-.small[
+.tiny[
+
+```r
+sales &lt;- read_rds("data/lego_sales.rds")
+jsonlite::toJSON(sales[1], pretty = TRUE)
+```
 
 ```
 ## [
@@ -551,7 +558,6 @@ We have data on lego sales and some information on the buyers in JSON format. We
 ##     "last_name": ["Beckstead"],
 ##     "age": [24],
 ##     "phone_number": ["216-555-2549"],
-##     "hobbies": ["Ultimate Disc", "Shopping"],
 ##     "purchases": [
 ##       {
 ##         "SetID": [24701],
@@ -575,177 +581,191 @@ We have data on lego sales and some information on the buyers in JSON format. We
 
 ## purrr solution
 
+.small[
 
 ```r
 sales %&gt;%
   purrr::map_dfr(
     function(l) {
-      purchases &lt;- purrr::map_dfr(l$purchases, ~.)
-      
-      l$purchases &lt;- NULL
-      l$hobbies &lt;- list(l$hobbies)
-      
-      cbind(as_tibble(l), purchases) %&gt;% as_tibble()
+      l$purchases &lt;- purrr::map_dfr(l$purchases, ~.)
+      as_tibble(l)
     }
   )
 ```
+]
 
 ---
 
 ## purr solution
 
-
-```
-## # A tibble: 620 x 16
-##    gender first_name last_name    age phone_number hobbies  SetID Number Theme Subtheme  Year
-##    &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;        &lt;list&gt;   &lt;int&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    &lt;int&gt;
-##  1 Female Kimberly   Beckstead     24 216-555-2549 &lt;chr [2… 24701 76062  DC C… "Mighty…  2016
-##  2 Male   Neel       Garvin        35 819-555-3189 &lt;chr [2… 25626 70595  Ninj… "Rise o…  2016
-##  3 Male   Neel       Garvin        35 819-555-3189 &lt;chr [2… 24665 21031  Arch… ""        2016
-##  4 Female Chelsea    Bouchard      41 &lt;NA&gt;         &lt;chr [3… 24695 31048  Crea… ""        2016
-##  5 Female Chelsea    Bouchard      41 &lt;NA&gt;         &lt;chr [3… 25626 70595  Ninj… "Rise o…  2016
-##  6 Female Chelsea    Bouchard      41 &lt;NA&gt;         &lt;chr [3… 24721 10831  Duplo ""        2016
-##  7 Female Bryanna    Welsh         19 &lt;NA&gt;         &lt;chr [2… 24797 75138  Star… "Episod…  2016
-##  8 Female Bryanna    Welsh         19 &lt;NA&gt;         &lt;chr [2… 24701 76062  DC C… "Mighty…  2016
-##  9 Male   Caleb      Garcia-Wi…    37 907-555-9236 &lt;chr [3… 24730 41115  Frie… ""        2016
-## 10 Male   Caleb      Garcia-Wi…    37 907-555-9236 &lt;chr [3… 25611 21127  Mine… "Minifi…  2016
-## # … with 610 more rows, and 5 more variables: Name &lt;chr&gt;, Pieces &lt;int&gt;, USPrice &lt;dbl&gt;,
-## #   ImageURL &lt;chr&gt;, Quantity &lt;dbl&gt;
-```
-
----
-
-## tidyr solution
-
-
-```r
-sales %&gt;%
-  tibble(sales = .) %&gt;%
-  unnest_wider(sales) %&gt;%
-  unnest_longer(purchases) %&gt;%
-  unnest_wider(purchases)
-```
-
----
-
-## tidyr solution - Step 1
-
 .small[
 
-```r
-sales %&gt;%
-  tibble(sales = .)
 ```
-
-```
-## # A tibble: 250 x 1
-##    sales           
-##    &lt;list&gt;          
-##  1 &lt;named list [7]&gt;
-##  2 &lt;named list [7]&gt;
-##  3 &lt;named list [6]&gt;
-##  4 &lt;named list [6]&gt;
-##  5 &lt;named list [7]&gt;
-##  6 &lt;named list [7]&gt;
-##  7 &lt;named list [7]&gt;
-##  8 &lt;named list [7]&gt;
-##  9 &lt;named list [7]&gt;
-## 10 &lt;named list [7]&gt;
-## # … with 240 more rows
-```
-]
-
----
-
-## tidyr solution - Step 2
-
-.small[
-
-```r
-sales %&gt;%
-  tibble(sales = .) %&gt;%
-  unnest_wider(sales)
-```
-
-```
-## # A tibble: 250 x 7
-##    gender first_name last_name        age phone_number hobbies   purchases 
-##    &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;        &lt;list&gt;    &lt;list&gt;    
-##  1 Female Kimberly   Beckstead         24 216-555-2549 &lt;chr [2]&gt; &lt;list [1]&gt;
-##  2 Male   Neel       Garvin            35 819-555-3189 &lt;chr [2]&gt; &lt;list [2]&gt;
-##  3 Female Chelsea    Bouchard          41 &lt;NA&gt;         &lt;chr [3]&gt; &lt;list [3]&gt;
-##  4 Female Bryanna    Welsh             19 &lt;NA&gt;         &lt;chr [2]&gt; &lt;list [2]&gt;
-##  5 Male   Caleb      Garcia-Wideman    37 907-555-9236 &lt;chr [3]&gt; &lt;list [2]&gt;
-##  6 Male   Chase      Fortenberry       19 205-555-3704 &lt;chr [2]&gt; &lt;list [2]&gt;
-##  7 Male   Kevin      Cruz              20 947-555-7946 &lt;chr [1]&gt; &lt;list [1]&gt;
-##  8 Male   Connor     Brown             36 516-555-4310 &lt;chr [1]&gt; &lt;list [3]&gt;
-##  9 Female Toni       Borison           40 284-555-4560 &lt;chr [2]&gt; &lt;list [2]&gt;
-## 10 Male   Daniel     Hurst             44 251-555-0845 &lt;chr [1]&gt; &lt;list [2]&gt;
-## # … with 240 more rows
-```
-]
-
----
-
-## tidyr solution - Step 3
-
-.small[
-
-```r
-sales %&gt;%
-  tibble(sales = .) %&gt;%
-  unnest_wider(sales) %&gt;%
-  unnest_longer(purchases)
-```
-
-```
-## # A tibble: 620 x 7
-##    gender first_name last_name        age phone_number hobbies   purchases        
-##    &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;        &lt;list&gt;    &lt;list&gt;           
-##  1 Female Kimberly   Beckstead         24 216-555-2549 &lt;chr [2]&gt; &lt;named list [10]&gt;
-##  2 Male   Neel       Garvin            35 819-555-3189 &lt;chr [2]&gt; &lt;named list [10]&gt;
-##  3 Male   Neel       Garvin            35 819-555-3189 &lt;chr [2]&gt; &lt;named list [10]&gt;
-##  4 Female Chelsea    Bouchard          41 &lt;NA&gt;         &lt;chr [3]&gt; &lt;named list [10]&gt;
-##  5 Female Chelsea    Bouchard          41 &lt;NA&gt;         &lt;chr [3]&gt; &lt;named list [10]&gt;
-##  6 Female Chelsea    Bouchard          41 &lt;NA&gt;         &lt;chr [3]&gt; &lt;named list [10]&gt;
-##  7 Female Bryanna    Welsh             19 &lt;NA&gt;         &lt;chr [2]&gt; &lt;named list [10]&gt;
-##  8 Female Bryanna    Welsh             19 &lt;NA&gt;         &lt;chr [2]&gt; &lt;named list [10]&gt;
-##  9 Male   Caleb      Garcia-Wideman    37 907-555-9236 &lt;chr [3]&gt; &lt;named list [10]&gt;
-## 10 Male   Caleb      Garcia-Wideman    37 907-555-9236 &lt;chr [3]&gt; &lt;named list [10]&gt;
+## # A tibble: 620 x 6
+##    gender first_name last_name   age phone_number purchases$SetID $Number $Theme
+##    &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;                  &lt;int&gt; &lt;chr&gt;   &lt;chr&gt; 
+##  1 Female Kimberly   Beckstead    24 216-555-2549           24701 76062   DC Co…
+##  2 Male   Neel       Garvin       35 819-555-3189           25626 70595   Ninja…
+##  3 Male   Neel       Garvin       35 819-555-3189           24665 21031   Archi…
+##  4 Female Chelsea    Bouchard     41 &lt;NA&gt;                   24695 31048   Creat…
+##  5 Female Chelsea    Bouchard     41 &lt;NA&gt;                   25626 70595   Ninja…
+##  6 Female Chelsea    Bouchard     41 &lt;NA&gt;                   24721 10831   Duplo 
+##  7 Female Bryanna    Welsh        19 &lt;NA&gt;                   24797 75138   Star …
+##  8 Female Bryanna    Welsh        19 &lt;NA&gt;                   24701 76062   DC Co…
+##  9 Male   Caleb      Garcia-W…    37 907-555-9236           24730 41115   Frien…
+## 10 Male   Caleb      Garcia-W…    37 907-555-9236           25611 21127   Minec…
 ## # … with 610 more rows
 ```
 ]
 
 ---
 
-## tidyr solution - Step 4
+## A tidyr solution
 
 .small[
 
 ```r
-sales %&gt;%
-  tibble(sales = .) %&gt;%
+tibble(sales = sales) %&gt;%
   unnest_wider(sales) %&gt;%
   unnest_longer(purchases) %&gt;%
   unnest_wider(purchases)
 ```
 
 ```
-## # A tibble: 620 x 16
-##    gender first_name last_name    age phone_number hobbies  SetID Number Theme Subtheme  Year
-##    &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;        &lt;list&gt;   &lt;int&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    &lt;int&gt;
-##  1 Female Kimberly   Beckstead     24 216-555-2549 &lt;chr [2… 24701 76062  DC C… "Mighty…  2016
-##  2 Male   Neel       Garvin        35 819-555-3189 &lt;chr [2… 25626 70595  Ninj… "Rise o…  2016
-##  3 Male   Neel       Garvin        35 819-555-3189 &lt;chr [2… 24665 21031  Arch… ""        2016
-##  4 Female Chelsea    Bouchard      41 &lt;NA&gt;         &lt;chr [3… 24695 31048  Crea… ""        2016
-##  5 Female Chelsea    Bouchard      41 &lt;NA&gt;         &lt;chr [3… 25626 70595  Ninj… "Rise o…  2016
-##  6 Female Chelsea    Bouchard      41 &lt;NA&gt;         &lt;chr [3… 24721 10831  Duplo ""        2016
-##  7 Female Bryanna    Welsh         19 &lt;NA&gt;         &lt;chr [2… 24797 75138  Star… "Episod…  2016
-##  8 Female Bryanna    Welsh         19 &lt;NA&gt;         &lt;chr [2… 24701 76062  DC C… "Mighty…  2016
-##  9 Male   Caleb      Garcia-Wi…    37 907-555-9236 &lt;chr [3… 24730 41115  Frie… ""        2016
-## 10 Male   Caleb      Garcia-Wi…    37 907-555-9236 &lt;chr [3… 25611 21127  Mine… "Minifi…  2016
-## # … with 610 more rows, and 5 more variables: Name &lt;chr&gt;, Pieces &lt;int&gt;, USPrice &lt;dbl&gt;,
-## #   ImageURL &lt;chr&gt;, Quantity &lt;dbl&gt;
+## # A tibble: 620 x 15
+##    gender first_name last_name    age phone_number SetID Number Theme  Subtheme 
+##    &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;        &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;    
+##  1 Female Kimberly   Beckstead     24 216-555-2549 24701 76062  DC Co… "Mighty …
+##  2 Male   Neel       Garvin        35 819-555-3189 25626 70595  Ninja… "Rise of…
+##  3 Male   Neel       Garvin        35 819-555-3189 24665 21031  Archi… ""       
+##  4 Female Chelsea    Bouchard      41 &lt;NA&gt;         24695 31048  Creat… ""       
+##  5 Female Chelsea    Bouchard      41 &lt;NA&gt;         25626 70595  Ninja… "Rise of…
+##  6 Female Chelsea    Bouchard      41 &lt;NA&gt;         24721 10831  Duplo  ""       
+##  7 Female Bryanna    Welsh         19 &lt;NA&gt;         24797 75138  Star … "Episode…
+##  8 Female Bryanna    Welsh         19 &lt;NA&gt;         24701 76062  DC Co… "Mighty …
+##  9 Male   Caleb      Garcia-Wi…    37 907-555-9236 24730 41115  Frien… ""       
+## 10 Male   Caleb      Garcia-Wi…    37 907-555-9236 25611 21127  Minec… "Minifig…
+## # … with 610 more rows, and 6 more variables: Year &lt;int&gt;, Name &lt;chr&gt;,
+## #   Pieces &lt;int&gt;, USPrice &lt;dbl&gt;, ImageURL &lt;chr&gt;, Quantity &lt;dbl&gt;
+```
+]
+
+---
+
+## tidyr solution (Step 1)
+
+.small[
+
+```r
+tibble(sales = sales)
+```
+
+```
+## # A tibble: 250 x 1
+##    sales           
+##    &lt;list&gt;          
+##  1 &lt;named list [6]&gt;
+##  2 &lt;named list [6]&gt;
+##  3 &lt;named list [5]&gt;
+##  4 &lt;named list [5]&gt;
+##  5 &lt;named list [6]&gt;
+##  6 &lt;named list [6]&gt;
+##  7 &lt;named list [6]&gt;
+##  8 &lt;named list [6]&gt;
+##  9 &lt;named list [6]&gt;
+## 10 &lt;named list [6]&gt;
+## # … with 240 more rows
+```
+]
+
+---
+
+## tidyr solution (Step 2)
+
+.small[
+
+```r
+tibble(sales = sales) %&gt;%
+  unnest_wider(sales)
+```
+
+```
+## # A tibble: 250 x 6
+##    gender first_name last_name        age phone_number purchases 
+##    &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;        &lt;list&gt;    
+##  1 Female Kimberly   Beckstead         24 216-555-2549 &lt;list [1]&gt;
+##  2 Male   Neel       Garvin            35 819-555-3189 &lt;list [2]&gt;
+##  3 Female Chelsea    Bouchard          41 &lt;NA&gt;         &lt;list [3]&gt;
+##  4 Female Bryanna    Welsh             19 &lt;NA&gt;         &lt;list [2]&gt;
+##  5 Male   Caleb      Garcia-Wideman    37 907-555-9236 &lt;list [2]&gt;
+##  6 Male   Chase      Fortenberry       19 205-555-3704 &lt;list [2]&gt;
+##  7 Male   Kevin      Cruz              20 947-555-7946 &lt;list [1]&gt;
+##  8 Male   Connor     Brown             36 516-555-4310 &lt;list [3]&gt;
+##  9 Female Toni       Borison           40 284-555-4560 &lt;list [2]&gt;
+## 10 Male   Daniel     Hurst             44 251-555-0845 &lt;list [2]&gt;
+## # … with 240 more rows
+```
+]
+
+---
+
+## tidyr solution (Step 3)
+
+.small[
+
+```r
+tibble(sales = sales) %&gt;%
+  unnest_wider(sales) %&gt;%
+  unnest_longer(purchases)
+```
+
+```
+## # A tibble: 620 x 6
+##    gender first_name last_name        age phone_number purchases        
+##    &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;        &lt;list&gt;           
+##  1 Female Kimberly   Beckstead         24 216-555-2549 &lt;named list [10]&gt;
+##  2 Male   Neel       Garvin            35 819-555-3189 &lt;named list [10]&gt;
+##  3 Male   Neel       Garvin            35 819-555-3189 &lt;named list [10]&gt;
+##  4 Female Chelsea    Bouchard          41 &lt;NA&gt;         &lt;named list [10]&gt;
+##  5 Female Chelsea    Bouchard          41 &lt;NA&gt;         &lt;named list [10]&gt;
+##  6 Female Chelsea    Bouchard          41 &lt;NA&gt;         &lt;named list [10]&gt;
+##  7 Female Bryanna    Welsh             19 &lt;NA&gt;         &lt;named list [10]&gt;
+##  8 Female Bryanna    Welsh             19 &lt;NA&gt;         &lt;named list [10]&gt;
+##  9 Male   Caleb      Garcia-Wideman    37 907-555-9236 &lt;named list [10]&gt;
+## 10 Male   Caleb      Garcia-Wideman    37 907-555-9236 &lt;named list [10]&gt;
+## # … with 610 more rows
+```
+]
+
+---
+
+## tidyr solution (Step 4)
+
+.small[
+
+```r
+tibble(sales = sales) %&gt;%
+  unnest_wider(sales) %&gt;%
+  unnest_longer(purchases) %&gt;%
+  unnest_wider(purchases)
+```
+
+```
+## # A tibble: 620 x 15
+##    gender first_name last_name    age phone_number SetID Number Theme  Subtheme 
+##    &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;        &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;    
+##  1 Female Kimberly   Beckstead     24 216-555-2549 24701 76062  DC Co… "Mighty …
+##  2 Male   Neel       Garvin        35 819-555-3189 25626 70595  Ninja… "Rise of…
+##  3 Male   Neel       Garvin        35 819-555-3189 24665 21031  Archi… ""       
+##  4 Female Chelsea    Bouchard      41 &lt;NA&gt;         24695 31048  Creat… ""       
+##  5 Female Chelsea    Bouchard      41 &lt;NA&gt;         25626 70595  Ninja… "Rise of…
+##  6 Female Chelsea    Bouchard      41 &lt;NA&gt;         24721 10831  Duplo  ""       
+##  7 Female Bryanna    Welsh         19 &lt;NA&gt;         24797 75138  Star … "Episode…
+##  8 Female Bryanna    Welsh         19 &lt;NA&gt;         24701 76062  DC Co… "Mighty …
+##  9 Male   Caleb      Garcia-Wi…    37 907-555-9236 24730 41115  Frien… ""       
+## 10 Male   Caleb      Garcia-Wi…    37 907-555-9236 25611 21127  Minec… "Minifig…
+## # … with 610 more rows, and 6 more variables: Year &lt;int&gt;, Name &lt;chr&gt;,
+## #   Pieces &lt;int&gt;, USPrice &lt;dbl&gt;, ImageURL &lt;chr&gt;, Quantity &lt;dbl&gt;
 ```
 ]
 
