@@ -185,8 +185,6 @@ On Github
 
 - What does submitted student work look like?
 
-- How do we facilitate creating student repositories and other repeated interactions?
-
 ---
 
 ## `r emo::ji("parcel")` ghclass
@@ -210,9 +208,39 @@ library(ghclass)
 
 ---
 
-## Options for giving feedback on GitHub
+## Using ghclass to distribute an assignment
 
-- Use the GitHub UI to add issues to each student's repo
+.small[
+```{r eval=FALSE}
+org_create_assignment(
+  org = "statprog-s1-2020", # Class github organization
+  user = roster$github,     # Student github usernames
+  repo = roster$hw1,        # Students' assign repo
+  team = roster$hw1,        # Students' assign team
+  source_repo = "statprog-s1-2020/hw01", # Template repository
+  private = TRUE            # Repository privacy
+)
+```
+
+```
+#> ✓ Mirrored repo 'statprog-s1-2020/hw01' to repo 'statprog-s1-2020/hw01_team01'.
+...
+#> ✓ Created team 'hw01_team01' in org 'statprog-s1-2020'.
+...
+#> ✓ Added user 'jane_doe' to team 'hw01_team01'.
+#> ✓ Added user 'john_doe' to team 'hw01_team01'.
+...
+#> ✓ Team 'hw01_team01' given 'push' access to repo 'statprog-s1-2020/hw01_team01'
+```
+]
+
+Further details available in the [getting started](https://rundel.github.io/ghclass/articles/articles/ghclass.html) vignette.
+
+---
+
+## Giving feedback on GitHub
+
+- Use the GitHub UI to add issues to each student or team's repo
 
 - Clone student repos locally, add feedback to code / notebook, push back to GitHub
 
@@ -220,16 +248,13 @@ library(ghclass)
 ```{r eval=FALSE}
 hw01_repos <- org_repos(org = "statprog-s1-2020", "hw01_")
 local_repo_clone(hw01_repos, local_path = "hw01")
-# Make chages
+# Make changes
 local_repo_commit(repo_dir = "hw01", message = "Feedback")
 local_repo_push(repo_dir = "hw01")
 ```
 ]
 
-- Use the `issue_create()` function to post issues to all repos at once
-  - Create a data frame based on your roster
-  - Add a column for the repo name in `org/repo` format to roster
-  - Add a column for feedback
+- Use the `issue_create()` function to post issues to all (or some) repos at once
   
 ---
 

@@ -190,6 +190,35 @@ library(ghclass)
 
 ---
 
+## Using ghclass to distribute an assignment
+
+.small[
+
+```r
+org_create_assignment(
+  org = "statprog-s1-2020", # Class github organization
+  user = roster$github,     # Student github usernames
+  repo = roster$hw1,        # Students' assign repo
+  team = roster$hw1,        # Students' assign team
+  source_repo = "statprog-s1-2020/hw01", # Template repository
+  private = TRUE            # Repository privacy
+)
+```
+
+```
+#&gt; ✓ Mirrored repo 'statprog-s1-2020/hw01' to repo 'statprog-s1-2020/hw01-team01'.
+...
+#&gt; ✓ Created team 'hw01-team01' in org 'statprog-s1-2020'.
+...
+#&gt; ✓ Added user 'jane_doe' to team 'hw01-team01'.
+#&gt; ✓ Added user 'john_doe' to team 'hw01-team01'.
+...
+#&gt; ✓ Team 'hw01-team01' given 'push' access to repo 'statprog-s1-2020/hw01-team01'
+```
+]
+
+---
+
 ## Options for giving feedback on GitHub
 
 - Use the GitHub UI to add issues to each student's repo
@@ -207,10 +236,7 @@ local_repo_push(repo_dir = "hw01")
 ```
 ]
 
-- Use the `issue_create()` function to post issues to all repos at once
-  - Create a data frame based on your roster
-  - Add a column for the repo name in `org/repo` format to roster
-  - Add a column for feedback
+- Use the `issue_create()` function to post issues to all (or some) repos at once
   
 ---
 
@@ -226,16 +252,16 @@ org_repo_stats("statprog-s1-2020", filter = "hw01_", branch = "main")
 ## # A tibble: 45 x 10
 ##    repo     private branch commits last_update         open_issues closed_issues
 ##    &lt;chr&gt;    &lt;lgl&gt;   &lt;chr&gt;    &lt;int&gt; &lt;dttm&gt;                    &lt;int&gt;         &lt;int&gt;
-##  1 statpro… TRUE    main        49 2020-10-08 15:57:27           2             0
-##  2 statpro… TRUE    main        26 2020-10-08 12:31:31           1             0
-##  3 statpro… TRUE    main        29 2020-10-08 15:30:51           1             0
-##  4 statpro… TRUE    main        99 2020-10-09 15:59:31           1             0
-##  5 statpro… TRUE    main        63 2020-10-09 14:24:57           1             0
-##  6 statpro… TRUE    main        31 2020-10-08 15:57:40           1             0
-##  7 statpro… TRUE    main        46 2020-10-09 07:40:20           1             0
-##  8 statpro… TRUE    main        66 2020-10-09 11:43:40           1             0
-##  9 statpro… TRUE    main        30 2020-10-08 16:38:11           1             0
-## 10 statpro… TRUE    main        43 2020-10-09 14:42:23           1             0
+##  1 statpro… TRUE    main        26 2020-10-08 12:31:31           1             0
+##  2 statpro… TRUE    main        29 2020-10-08 15:30:51           1             0
+##  3 statpro… TRUE    main        99 2020-10-09 15:59:31           1             0
+##  4 statpro… TRUE    main        63 2020-10-09 14:24:57           1             0
+##  5 statpro… TRUE    main        31 2020-10-08 15:57:40           1             0
+##  6 statpro… TRUE    main        27 2020-10-09 14:40:16           1             0
+##  7 statpro… TRUE    main        55 2020-10-09 05:38:47           1             0
+##  8 statpro… TRUE    main        37 2020-10-09 14:19:34           1             0
+##  9 statpro… TRUE    main        24 2020-10-09 12:34:39           1             0
+## 10 statpro… TRUE    main        39 2020-10-08 16:32:11           1             0
 ## # … with 35 more rows, and 3 more variables: open_prs &lt;int&gt;, merged_prs &lt;int&gt;,
 ## #   closed_prs &lt;int&gt;
 ```
