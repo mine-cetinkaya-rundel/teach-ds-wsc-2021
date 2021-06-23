@@ -264,7 +264,7 @@ legend("topright", legend = c("automatic", "manual"),
 
 ### Tidyverse
 
-```{r fig.height=1.5}
+```{r out.width = "100%", fig.asp = 0.3, fig.width = 8}
 ggplot(mtcars,
        aes(x = disp, y = mpg, color = transmission)) +
   geom_point() +
@@ -332,105 +332,7 @@ class: middle
 
 --
 
-1. It can be easier for students to detect mistakes in visualizations compared to those in wrangling or modeling. 
-  
----
-
-**Ex 1. It can be more difficult, especially for a new learner, to catch errors in data wrangling than in a data visualization.**
-
-Suppose we want to find the average mileage of cars with more than 100 horsepower.
-
-- Left: Incorrect because `hp` is numeric, but filtering is based on string comparison, note that no error is given.
-- Right: Correct filtering, and note that reported mean is different.
-
-.small[
-.pull-left[
-```{r wrong-filter, echo=TRUE, size = "small"}
-mtcars %>%
-  filter(hp > "100") %>%
-  summarise(mean(mpg))
-```
-]
-.pull-right[
-```{r right-filter, echo=TRUE, size = "small"}
-mtcars %>%
-  filter(hp > 100) %>%
-  summarise(mean(mpg))
-```
-]
-]
-
----
-
-**Ex 2. It can be difficult to catch modeling errors, again especially for new learners.** 
-
-Fit a model predicting gas efficiency (`mpg`) from engine (`vs`, where `0` means V-shaped and `1` means straight). 
-- Left: Incorrect, fit model where `vs` numeric
-- Right: Correct, fit model where `vs` factor (categorical)
-- Note: Slope estimates same.
-
-.small[
-.pull-left[
-```{r model-binary-predictor-numeric, echo=TRUE, eval=FALSE, size="small"}
-lm(mpg ~ vs, data = mtcars)
-```
-```{r echo=FALSE, size="small"}
-m_bin_num <- lm(mpg ~ vs, data = mtcars)
-tidy(m_bin_num) %>% 
-  select(term, estimate) %>% 
-  data.frame() %>% 
-  print(row.names = FALSE)
-```
-]
-.pull-right[
-```{r model-binary-predictor-factor, echo=TRUE, eval=FALSE, size="small"}
-lm(mpg ~ as.factor(vs), data = mtcars)
-```
-```{r echo=FALSE, size="small"}
-m_bin_fac <- lm(mpg ~ as.factor(vs), data = mtcars)
-tidy(m_bin_fac) %>% 
-  select(term, estimate) %>% 
-  data.frame() %>% 
-  print(row.names = FALSE)
-```
-]
-]
-
----
-
-**Ex 2. Continued**
-
-Predict `mpg` from `gear` (the number of forward gears)
-
-- Note: slope estimates are different for numeric (left) vs. categorical (right) `gear`
-- Reason for difference may be obvious to someone who is already familiar with modeling and dummy variable encoding, but not to new learners
-
-.small[
-.pull-left[
-```{r model-multilevel-predictor-numeric-fit, echo=TRUE, eval=FALSE, size="small"}
-lm(mpg ~ gear, data = mtcars)
-```
-```{r model-multilevel-predictor-numeric-print, echo=FALSE, size="small"}
-m_mul_num <- lm(mpg ~ gear, data = mtcars)
-tidy(m_mul_num) %>% 
-  select(term, estimate) %>% 
-  data.frame() %>% 
-  print(row.names = FALSE)
-```
-]
-.pull-right[
-```{r model-multilevel-predictor-factor-fit, echo=TRUE, eval=FALSE, size="small"}
-lm(mpg ~ as.factor(gear), data = mtcars)
-```
-```{r model-multilevel-predictor-factor-print, echo=FALSE, size="small"}
-m_mul_fac <- lm(mpg ~ as.factor(gear), data = mtcars)
-tidy(m_mul_fac) %>% 
-  select(term, estimate) %>% 
-  data.frame() %>% 
-  print(row.names = FALSE)
-```
-]
-]
+1. It can be easier for students to detect mistakes in visualizations compared to those in wrangling or modeling.
 
 ---
 
@@ -538,17 +440,6 @@ staff_long <- staff %>%
   mutate(percentage = as.numeric(percentage))
 
 staff_long
-```
-]
-
----
-
-## Nope!
-
-.midi[
-```{r fig.height=2}
-ggplot(staff_long, aes(x = percentage, y = year, color = faculty_type)) +
-  geom_col(position = "dodge")
 ```
 ]
 

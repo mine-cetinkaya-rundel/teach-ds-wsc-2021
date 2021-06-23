@@ -259,7 +259,7 @@ ggplot(mtcars,
   facet_wrap(~ cyl)
 ```
 
-![](02-teach-tidyverse_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
+&lt;img src="02-teach-tidyverse_files/figure-html/unnamed-chunk-12-1.png" width="100%" /&gt;
 
 ---
 
@@ -320,118 +320,7 @@ class: middle
 
 --
 
-1. It can be easier for students to detect mistakes in visualizations compared to those in wrangling or modeling. 
-  
----
-
-**Ex 1. It can be more difficult, especially for a new learner, to catch errors in data wrangling than in a data visualization.**
-
-Suppose we want to find the average mileage of cars with more than 100 horsepower.
-
-- Left: Incorrect because `hp` is numeric, but filtering is based on string comparison, note that no error is given.
-- Right: Correct filtering, and note that reported mean is different.
-
-.small[
-.pull-left[
-
-```r
-mtcars %&gt;%
-  filter(hp &gt; "100") %&gt;%
-  summarise(mean(mpg))
-```
-
-```
-##   mean(mpg)
-## 1  20.09062
-```
-]
-.pull-right[
-
-```r
-mtcars %&gt;%
-  filter(hp &gt; 100) %&gt;%
-  summarise(mean(mpg))
-```
-
-```
-##   mean(mpg)
-## 1  17.45217
-```
-]
-]
-
----
-
-**Ex 2. It can be difficult to catch modeling errors, again especially for new learners.** 
-
-Fit a model predicting gas efficiency (`mpg`) from engine (`vs`, where `0` means V-shaped and `1` means straight). 
-- Left: Incorrect, fit model where `vs` numeric
-- Right: Correct, fit model where `vs` factor (categorical)
-- Note: Slope estimates same.
-
-.small[
-.pull-left[
-
-```r
-lm(mpg ~ vs, data = mtcars)
-```
-
-```
-##         term  estimate
-##  (Intercept) 16.616667
-##           vs  7.940476
-```
-]
-.pull-right[
-
-```r
-lm(mpg ~ as.factor(vs), data = mtcars)
-```
-
-```
-##            term  estimate
-##     (Intercept) 16.616667
-##  as.factor(vs)1  7.940476
-```
-]
-]
-
----
-
-**Ex 2. Continued**
-
-Predict `mpg` from `gear` (the number of forward gears)
-
-- Note: slope estimates are different for numeric (left) vs. categorical (right) `gear`
-- Reason for difference may be obvious to someone who is already familiar with modeling and dummy variable encoding, but not to new learners
-
-.small[
-.pull-left[
-
-```r
-lm(mpg ~ gear, data = mtcars)
-```
-
-```
-##         term estimate
-##  (Intercept) 5.623333
-##         gear 3.923333
-```
-]
-.pull-right[
-
-```r
-lm(mpg ~ as.factor(gear), data = mtcars)
-```
-
-```
-##              term  estimate
-##       (Intercept) 16.106667
-##  as.factor(gear)4  8.426667
-##  as.factor(gear)5  5.273333
-```
-]
-]
+1. It can be easier for students to detect mistakes in visualizations compared to those in wrangling or modeling.
 
 ---
 
@@ -569,20 +458,6 @@ staff_long
 
 ---
 
-## Nope!
-
-.midi[
-
-```r
-ggplot(staff_long, aes(x = percentage, y = year, color = faculty_type)) +
-  geom_col(position = "dodge")
-```
-
-![](02-teach-tidyverse_files/figure-html/unnamed-chunk-21-1.png)&lt;!-- --&gt;
-]
-
----
-
 ## Meh
 
 .midi[
@@ -592,7 +467,7 @@ ggplot(staff_long, aes(x = percentage, y = year, fill = faculty_type)) +
   geom_col(position = "dodge")
 ```
 
-![](02-teach-tidyverse_files/figure-html/unnamed-chunk-22-1.png)&lt;!-- --&gt;
+![](02-teach-tidyverse_files/figure-html/unnamed-chunk-19-1.png)&lt;!-- --&gt;
 ]
 
 ---
@@ -606,7 +481,7 @@ ggplot(staff_long, aes(x = percentage, y = year, fill = faculty_type)) +
   geom_col()
 ```
 
-![](02-teach-tidyverse_files/figure-html/unnamed-chunk-23-1.png)&lt;!-- --&gt;
+![](02-teach-tidyverse_files/figure-html/unnamed-chunk-20-1.png)&lt;!-- --&gt;
 ]
 
 ---
