@@ -41,7 +41,7 @@ The RStudio Cloud workspace is at  [bit.ly/teach-ds-wsc-cloud](https://bit.ly/te
 | 09:00 - 09:40 | [Computing infrastructure with RStudio Cloud](https://mine-cetinkaya-rundel.github.io/teach-ds-wsc-2021/materials/03-rstudio-cloud/03-rstudio-cloud.html) |
 | 09:40 - 09:45 | :coffee: *Break*   |
 | 09:45 - 10:10 | [Reproducible workflows](https://mine-cetinkaya-rundel.github.io/teach-ds-wsc-2021/materials/04-rmd-git/04-rmd-git.html) |
-| 10:10 - 10:50 | [Interactivity and immediate feedback](https://mine-cetinkaya-rundel.github.io/2021-eku-design-ds/materials/04-learnr/04-learnr.html) |
+| 10:10 - 10:50 | [Interactivity and immediate feedback](https://mine-cetinkaya-rundel.github.io/teach-ds-wsc-2021/materials/05-learnr/05-learnr.html) |
 | 10:50 - 11:00 | Wrap up and Q&A |
 
 ## Instructor
