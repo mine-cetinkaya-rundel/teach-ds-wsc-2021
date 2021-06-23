@@ -11,7 +11,7 @@ runtime: shiny_prerendered
 ```{r setup, include=FALSE}
 # packages
 
-# devtools::install_github("rstudio/learnr")
+#devtools::install_github("rstudio/learnr")
 library(learnr)
 #devtools::install_github("rstudio-education/gradethis")
 library(gradethis)

@@ -326,8 +326,8 @@ question_text(
 .your-turn[
 *Recommend one person in each group share their screen and everyone work together to work through the document.*
 
-- Go to RStudio Cloud
-- Start the assignment titled `04 - Interactive tutorials`
+- Go to [bit.ly/teach-ds-wsc-cloud](https://bit.ly/teach-ds-wsc-cloud), the RStudio Cloud workspace for this workshop
+- Start the assignment titled **Penguins**
 - Open `penguins.Rmd` and click on **Run Document**
 - Read the instructions under `Multiple choice questions`
 - See help for `?question` and `?quiz` and don't hesitate to call for help!
