@@ -1,0 +1,44 @@
+---
+title: "00 <br> welcome"
+subtitle: "teaching data science <br> `r emo::ji('link')` [bit.ly/teach-ds-wsc](https://bit.ly/teach-ds-wsc)"
+author: "<br> dr. mine çetinkaya-rundel <br> dr. colin rundel"
+date: "23 june 2021"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["xaringan-themer.css", "slides-style.css"]
+    nature:
+      highlightStyle: solarized-light
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+---
+
+## Introductions
+
+- Mine Çetinkaya-Rundel (Duke University, RStudio)
+
+- Colin Rundel (Duke University)
+
+---
+
+## Useful links
+
+- All workshop materials: [bit.ly/teach-ds-wsc](https://bit.ly/teach-ds-wsc)
+
+- RStudio Cloud: [bit.ly/teach-ds-wsc-cloud](https://bit.ly/teach-ds-wsc-cloud)
+
+---
+
+## A resource you can always go back to
+
+.large[
+[Data Science in a Box - datasciencebox.org](https://datasciencebox.org/)
+]
+
+<iframe width="900" height="450" src="https://datasciencebox.org" frameborder="0" style="background:white;"></iframe>  

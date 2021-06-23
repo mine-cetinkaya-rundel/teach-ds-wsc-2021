@@ -35,7 +35,7 @@ The RStudio Cloud workspace is at  [bit.ly/teach-ds-wsc-cloud](https://bit.ly/te
 
 | Time          | Activity         |
 | :------------ | :--------------- |
-| 08:00 - 08:05 | Welcome  |
+| 08:00 - 08:05 | [Welcome](https://mine-cetinkaya-rundel.github.io/teach-ds-wsc-2021/materials/00-welcome/00-welcome.html)  |
 | 08:05 - 08:30 | [Curriculum design](https://mine-cetinkaya-rundel.github.io/teach-ds-wsc-2021/materials/01-curriculum-design/01-curriculum-design.html) |
 | 08:30 - 09:00 | [Teaching the tidyverse](https://mine-cetinkaya-rundel.github.io/teach-ds-wsc-2021/materials/02-teach-tidyverse/02-teach-tidyverse.html) |
 | 09:00 - 09:40 | [Computing infrastructure with RStudio Cloud](https://mine-cetinkaya-rundel.github.io/teach-ds-wsc-2021/materials/03-rstudio-cloud/03-rstudio-cloud.html) |
