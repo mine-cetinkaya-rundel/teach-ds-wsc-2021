@@ -434,15 +434,6 @@ tidy(m_mul_fac) %>%
 
 ---
 
-.discussion[
-Do you start your teaching with data visualisation / ggplot2? 
-
-- If yes, do you have other reasons than the ones we listed?
-- If no, why not? Are you now convinced otherwise?
-]
-
----
-
 class: middle, inverse
 
 # Teaching the tidyverse in 2021
@@ -534,22 +525,6 @@ pivot_longer(
 
 ---
 
-.your-turn[
-### 02 - Teach the tidyverse / `pivot.Rmd`
-
-- Go to [bit.ly/teach-ds-wsc-cloud](https://bit.ly/teach-ds-wsc-cloud) to join the RStudio Cloud workspace for this workshop
-- Start the **assignment** called **02 - Teaching the tidyverse**
-- Open the R Markdown document called `pivot.Rmd`, knit the document, view the result
-- Convert the data from wide format to long format.
-- **Stretch goal:** Convert the back to wide format from long format.
-]
-
-```{r echo=FALSE}
-countdown(minutes = 10)
-```
-
----
-
 ## Pivot staff data
 
 .small[
@@ -603,51 +578,12 @@ ggplot(staff_long, aes(x = percentage, y = year, fill = faculty_type)) +
 
 ## More improvement
 
-.midi[
-```{r fig.width=7, fig.height = 2.5}
-ggplot(staff_long, aes(x = year, y = percentage, 
-                       group = faculty_type, color = faculty_type)) +
-  geom_line() +
-  theme_minimal()
-```
-]
-
----
-
-```{r staff-lines-1, echo = FALSE}
-staff_long %>%
-  mutate( #<<
-    part_time = if_else(faculty_type == "Part-Time Faculty", #<<
-                        "Part-Time Faculty", "Other Faculty"), #<<
-    ) %>% #<<
-  ggplot(aes(x = year, y = percentage/100, group = faculty_type, 
-             color = part_time)) +
-  geom_line() +
-  scale_color_manual(values = c("gray", "red")) + #<<
-  scale_y_continuous(labels = label_percent(accuracy = 1)) + #<<
-  theme_minimal() +
-  labs(
-    title = "Instructional staff employment trends",
-    x = "Year", y = "Percentage", color = NULL
-  ) +
-  theme(legend.position = "bottom")
-```
-
----
-
-.midi[
-```{r ref.label = "staff-lines-1", eval = FALSE}
-```
-]
-
----
-
 ```{r staff-lines-2, echo = FALSE}
 staff_long %>%
   mutate( 
     part_time = if_else(faculty_type == "Part-Time Faculty",
                         "Part-Time Faculty", "Other Faculty"),
-    year = as.numeric(year) #<<
+    year = as.numeric(year)
     ) %>% 
   ggplot(aes(x = year, y = percentage/100, group = faculty_type, 
              color = part_time)) +
@@ -677,10 +613,16 @@ class: middle
 
 ---
 
-class: middle
+## Data manipulation with purrr (or not?)
+
+- purrr is a package for functional programming with the tidyverse
+- If you picked up the tidyverse ~3 years ago, purrr was commonly used for data science tasks that involve iteration
+- In 2021, it's possible to do many of these data science tasks with dplyr and tidyr, which tend to me much more approachable to new learners
+
+--
 
 .discussion[
-How familiar are you with the purrr package? Do you teach it in your introductory data science courses? If yes, how much?
+How familiar are you with the purrr package? Have you taught purrr in your data science courses?
 ]
 
 ---
@@ -789,7 +731,7 @@ sales %>%
 
 Another common use case for purrr has been working across rows and/or columns of a data frames.
 
-Much of this functionality is now available directly in dplyr via the `across` and `rowwise` functions. Additional details and examples are availble in the vignettes:
+Much of this functionality is now available directly in dplyr via the `across()` and `rowwise()` functions. Additional details and examples are availble in the vignettes:
 - [column-wise operations vignette](https://dplyr.tidyverse.org/articles/colwise.html)
 - [row-wise operations vignette](https://dplyr.tidyverse.org/articles/rowwise.html)
 
