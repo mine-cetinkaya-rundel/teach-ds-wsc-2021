@@ -509,8 +509,8 @@ knitr::include_graphics("img/pivot.gif")
 
 ## `pivot_*()` functions
 
-```{r echo=FALSE}
-knitr::include_graphics("img/tidyr-longer-wider.gif", fig.alt = "pivot function animation")
+```{r echo=FALSE, fig.alt = "pivot function animation"}
+knitr::include_graphics("img/tidyr-longer-wider.gif")
 ```
 
 ---
@@ -785,7 +785,7 @@ sales %>%
 
 ---
 
-## dplyr 1.0.0
+## dplyr improvements
 
 Another common use case for purrr has been working across rows and/or columns of a data frames.
 
