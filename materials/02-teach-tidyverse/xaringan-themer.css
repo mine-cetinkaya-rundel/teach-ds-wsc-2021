@@ -34,10 +34,10 @@ h1, h2, h3 {
 .remark-slide-content {
   background-color: #FFFFFF;
   font-size: 30px;
-  
-  
-  
-  padding: 1em 4em 1em 4em;
+
+
+
+  padding: 1em 2.5em 1em 2.5em;
 }
 .remark-slide-content h1 {
     font-size: 55px;
@@ -49,7 +49,7 @@ h1, h2, h3 {
     font-size: 35px;
 }
 .remark-code, .remark-inline-code {
-  font-family: Fira Code, 'Lucida Console', Monaco, monospace;
+  font-family: 'Fira Mono', 'Lucida Console', Monaco, monospace;
 }
 .remark-code {
   font-size: 0.9em;
@@ -57,8 +57,8 @@ h1, h2, h3 {
 .remark-inline-code {
   font-size: 1em;
   color: #0F4C81;
-  
-  
+
+
 }
 .remark-slide-number {
   color: #0F4C81;
@@ -71,7 +71,7 @@ a, a > code {
   text-decoration: none;
 }
 .footnote {
-  
+
   position: absolute;
   bottom: 3em;
   padding-right: 4em;
@@ -83,7 +83,7 @@ a, a > code {
 .inverse {
   background-color: #A2B8D4;
   color: #000000;
-  
+
 }
 .inverse h1, .inverse h2, .inverse h3 {
   color: #000000;
@@ -93,9 +93,9 @@ a, a > code {
 }
 .title-slide {
   background-color: #0F4C81;
-  
-  
-  
+
+
+
 }
 .title-slide .remark-slide-number {
   display: none;

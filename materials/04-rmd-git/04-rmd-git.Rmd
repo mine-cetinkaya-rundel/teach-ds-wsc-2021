@@ -53,10 +53,13 @@ class: middle, inverse
 ## Reproducibility checklist
 
 - Are the tables and figures reproducible from the code and data?
+
 - Does the code actually do what you think it does?
-- In addition to what was done, is it clear *why* it was done? (e.g., how 
-were parameter settings chosen?)
+
+- In addition to what was done, is it clear *why* it was done? (e.g., how were parameter/settings chosen?)
+
 - Can the code be used for other data?
+
 - Can you extend the code to do other things?
 
 ---
@@ -78,20 +81,23 @@ inseparable
 
 ## Roadmap
 
-1. Scriptability $\rightarrow$ R
+1. Scriptability $\rightarrow$ R  
 
-2. Literate programming $\rightarrow$ R Markdown
+2. Literate programming $\rightarrow$ R Markdown 
 
 3. Version control $\rightarrow$ Git / GitHub
+
 
 ---
 
 ## Why R Markdown?
 
 - **Reproducibility:** Train new analysts whose only workflow is a reproducible one
+
 - **Pedagogy:**
   - Code + output + prose together
   - Syntax highlighting FTW!
+
 - **Efficiency:** Consistent formatting -> easier grading
 
 ---
@@ -99,18 +105,25 @@ inseparable
 ## Tips for starting with R Markdown
 
 - Minimal YAML
+
 - Minimal chunk options
+
 - Use well scaffolded R Markdown documents
-- Knit early and often
-- New: Use the visual editor!
+
+- Encourage students to knit early and often
+
+- *New*: Use the visual editor!
 
 ---
 
 ## Why Git + GitHub?
 
 - **Version control:** Lots of mistakes along the way, need ability to revert
+
 - **Collaboration:** Platform that removes barriers to well documented collaboration
+
 - **Accountability:** Transparent commit history
+
 - **Early introduction:** 
   - Mastery takes time, earlier start the better
   - Marketability
@@ -119,7 +132,7 @@ inseparable
 
 ## Goals for version control with Git / GitHub
 
-- Centralize the distribution and collection of all student assignments
+- Centralize the distribution and collection of student assignments
 
 - Enable students to work collaboratively
 
@@ -144,41 +157,35 @@ On Github
 
 - 1 repo / (student or team) / assignment
 
-- Student and team repos all private by default
+- Student and team repos private by default
 
 ---
 
 ## Setting up a course
 
 1. Create course organization on GitHub (https://github.com/organizations/new)
-1. Request education discount for organization (https://education.github.com/discount)
+
+1. Request education discount for organization (https://education.github.com/discount_requests/teacher_application)
+
 1. Invite students to organization
+
 1. Create assignment(s)
+
 1. Collect assignments(s)
+
 1. Grade assignment(s)
-
----
-
-## Required information
-
-When requesting the discount you will need to provide the following:
-
-- A brief description of the purpose for the GitHub organization and how you plan to use GitHub
-
-- Establishing connection to an academic institution by verifying with an `.edu` email + photo of your school id.
-
-- Link to relevant website for the class / workshop / research group
-
-- Verification is manual and can take between a couple hours to a couple days.
 
 ---
 
 ## Demo
 
 - What does a course organization look like?
+
 - What does a starter repo look like?
+
 - What does submitted student work look like?
-- How do we facilitate creating student repositories and other repeated interctions?
+
+- How do we facilitate creating student repositories and other repeated interactions?
 
 ---
 
@@ -187,14 +194,17 @@ When requesting the discount you will need to provide the following:
 ### Tools for managing github class organization accounts
 
 - Made for instructors who use GitHub for class management, e.g. students submit assignments via GitHub repos
+
 - The package assumes that you’re an R user, and you probably teach R as well, though that’s not a requirement since this package is all about setting up repositories with the right permissions, not what your students put in those repositories.
+
 - The package is still under active development and is not currently on CRAN but can be installed from GitHub using:
 
 ```{r eval=FALSE}
 devtools::install_github("rundel/ghclass")
+library(ghclass)
 ```
 
-```{r eval=FALSE}
+```{r include=FALSE}
 library(ghclass)
 ```
 
@@ -204,13 +214,17 @@ library(ghclass)
 
 - Use the GitHub UI to add issues to each student's repo
 
-- Clone student repos locally and reproduce their work prior to giving feedback by adding issues on the GitHub UI
+- Clone student repos locally, add feedback to code / notebook, push back to GitHub
 
+.small[
 ```{r eval=FALSE}
-hw01_repos <- org_repos(org, "hw-01-airbnb-edi-")
-local_repo_clone(hw01_repos, 
-                 local_path = "hw01_submissions")
+hw01_repos <- org_repos(org = "statprog-s1-2020", "hw01_")
+local_repo_clone(hw01_repos, local_path = "hw01")
+# Make chages
+local_repo_commit(repo_dir = "hw01", message = "Feedback")
+local_repo_push(repo_dir = "hw01")
 ```
+]
 
 - Use the `issue_create()` function to post issues to all repos at once
   - Create a data frame based on your roster
@@ -221,9 +235,11 @@ local_repo_clone(hw01_repos,
 
 ## Get big picture stats for an assignment
 
-```{r eval=FALSE}
-org_repo_stats(org, filter = "hw-01-airbnb-edi-")
+.small[
+```{r warning=FALSE}
+org_repo_stats("statprog-s1-2020", filter = "hw01_", branch = "main")
 ```
+]
 
 ---
 
@@ -233,16 +249,20 @@ org_repo_stats(org, filter = "hw-01-airbnb-edi-")
 
 - Peer review is an incredibly effective learning experience for both the reviewers and the reviewees, however it does require coordination and being able to carve out sufficient time in the course schedule.
 
-- Tip: Do not solely count on peer review for feedback as some reviewers might be less diligent than others. Teams reviewing teams, as opposed to individual reviewing individuals, might address this issue partially.
+- Tip: Do not solely count on peer review for feedback as some reviewers might be less diligent than others. Teams reviewing teams, as opposed to individual reviewing individuals, can partially address this.
 
-See the [Peer review with ghclass vignette](https://rundel.github.io/ghclass/articles/peer.html) for more.
+See the [Peer review with ghclass (dev) vignette](https://rundel.github.io/ghclass-dev/) for more.
 
 ---
 
 ## Git + GitHub lessons learned
 
 - If you plan on using git in class, start on day one, don't wait until the "right time"
+
 - First assignment should be individual, not team based to avoid merge conflicts
+
 - Students need to remember to pull before starting work
+
 - Impossible (?) to avoid shell intervention every once in a while
-- Remind students on that future projects should go on GitHub with PI approval
+
+- Remind students on that future projects should go on GitHub with PI / supervisor approval
