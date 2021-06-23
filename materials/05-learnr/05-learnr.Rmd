@@ -45,17 +45,6 @@ library(countdown)
 library(tidyverse)
 ```
 
-.huge-text[you...]
-
-.large[
-- know and teach R
-- are familiar with R Markdown
-- are interested in providing automated feedback
-- might be interested in automated marking
-]
-
----
-
 class: middle, inverse
 
 .pull-left[
@@ -530,5 +519,7 @@ gradethis::gradethis_demo()
 ```
 
 * [RStudio Cloud Primers](https://rstudio.cloud/learn/primers) - these are all learnr tutorials and their code is available on [github](https://github.com/rstudio-education/primers)
+
+* [Feedback at scale](https://www.rstudio.com/resources/rstudioglobal-2021/feedback-at-scale/) talk at rstudio::global(2021)
 
 * [Data Science in a Box](http://datasciencebox.org) - code for all tutorials available in the [dsbox](https://github.com/rstudio-education/dsbox) package
