@@ -69,6 +69,18 @@ Source: R for Data Science. Grolemund and Wickham.
 
 ---
 
+## Tidy data + Tidyverse references
+
+.pull-left[
+&lt;img src="img/tidy-papers.png" width="458" /&gt;
+]
+.pull-right[
+- Wickham, H. (2014). **Tidy data.** Journal of Statistical Software, 59(10), 1-23.
+- Wickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L., François, R., ... &amp; Kuhn, M. (2019). **Welcome to the Tidyverse.** Journal of Open Source Software, 4(43), 1686.
+]
+
+---
+
 ## Pipe operator (`magrittr`)
 
 &gt; I want to find my keys, then start my car, then drive to work, then park my car.
@@ -105,19 +117,7 @@ For teaching purposes we would strongly recommend using magrittr for the foresee
 
 - `|&gt;` only supports piping to the first argument (no support for `.`)
 
-- For most use cases - package dependencies are easier than R version dependencies 
-
----
-
-## Tidyverse references
-
-.pull-left[
-&lt;img src="img/tidy-papers.png" width="458" /&gt;
-]
-.pull-right[
-- Wickham, H. (2014). **Tidy data.** Journal of Statistical Software, 59(10), 1-23.
-- Wickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L., François, R., ... &amp; Kuhn, M. (2019). **Welcome to the Tidyverse.** Journal of Open Source Software, 4(43), 1686.
-]
+- For most use cases, package dependencies are easier than R version dependencies 
 
 ---
 
@@ -267,8 +267,8 @@ ggplot(mtcars,
 
 ## Benefits of starting with the tidyverse
 
-- (More) human readable syntax
-- Consistent syntax
+- More (human) readable syntax
+- More consistent syntax
 - Ease of multivariate visualizations
 - Data tidying/rectangling without advanced programming
 - Growth opportunities:
@@ -317,21 +317,21 @@ class: middle
 --
 
 1. Students come in with intuition for being able to interpret data visualizations without needing much instructions. 
-  - Focus the majority of class time initially on R syntax and leave interpretations to students. 
-  - Later on the scale tips -- spend more class time on concepts and results interpretations and less on R syntax.
+  - Focus the majority of class time initially on syntax and leave interpretations to students. 
+  - Later on the scale tips -- spend more class time on concepts and results interpretations and less on syntax.
 
 --
 
-1. It can be easier for students to detect mistakes in visualisations compared to those in data wrangling or statistical modeling. 
+1. It can be easier for students to detect mistakes in visualizations compared to those in wrangling or modeling. 
   
 ---
 
-**Ex 1. It can be more difficult, especially for a new learner, to catch errors in data wrangling than in a data visualisation.**
+**Ex 1. It can be more difficult, especially for a new learner, to catch errors in data wrangling than in a data visualization.**
 
 Suppose we want to find the average mileage of cars with more than 100 horsepower.
 
-- Left: Incorrect because `hp` is numeric, so no filtering is done, but also no error is given.
-- Right: Correct, and note that reported mean is different.
+- Left: Incorrect because `hp` is numeric, but filtering is based on string comparison, note that no error is given.
+- Right: Correct filtering, and note that reported mean is different.
 
 .small[
 .pull-left[
@@ -555,7 +555,7 @@ pivot_longer(
 - **Stretch goal:** Convert the back to wide format from long format.
 ]
 
-<div class="countdown" id="timer_60d25641" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_60d28905" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
